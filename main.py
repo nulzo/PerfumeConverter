@@ -17,12 +17,13 @@ def getData(filename):
                 data_dict[f"{chem[0]}"] = chem[1]
         return data_dict
     except FileNotFoundError:
-        print("FILE NOT FOUND!")
+        print()
+        print(f'\x1b[38;5;124m' + str("FILE NOT FOUND") + u'\u001b[0m')
         return None
 
 def convertGrams():
     """This function gathers how many grams total the user wants"""
-    amount = int(input("How many grams total would you like?: "))
+    amount = int(input("\nHow many grams total would you like?: "))
     return amount
 
 def converter(data, amount):
@@ -30,6 +31,7 @@ def converter(data, amount):
     total = 0
     percent = 0
     new_dict = {}
+    print(f"\nTotal chemicals: {len(data)}\n")
     for chem, perc in data.items():
         percent = float(perc) * (amount / 100)
         print(f"{chem:<30}: {percent:.4f}g")
@@ -39,12 +41,21 @@ def converter(data, amount):
     return new_dict
 
 def main():
-    filename = input("What is the name of the file (including file type; Case sensitive): ")
-    data = getData(f"data/{filename}")
-    if data:
-        amount = convertGrams()
-        new_data = converter(data, amount)
-    #TODO: add function to save new data to csv
+    while True:
+        filename = input("\nWhat is the name of the file (including file type; Case sensitive): ")
+        data = getData(f"data/{filename}")
+        cont = 'y'
+        if data:
+            amount = convertGrams()
+            new_data = converter(data, amount)
+            #TODO: add function to save new data to csv
+        cont = input("\nContinue: (y/n): ").lower()
+        while cont != 'y' and cont != 'n':
+            print(f'\x1b[38;5;124m' + str("INVALID INPUT") + u'\u001b[0m')
+            cont = input("Continue: (y/n): ").lower()
+        if cont == "n":
+            print("Goodbye.")
+            break
 
 
 if __name__ == "__main__":
