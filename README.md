@@ -13,6 +13,9 @@
 - For example, 1.5 grams of concentrate would yield a 10 gram final fragrance.
 
 ## Screenshots
+
 ![](https://imgur.com/FqyuI5f.png)
 
 ![](https://imgur.com/xZmC3lX.png)
+
+Made by: Nolan Gregory
