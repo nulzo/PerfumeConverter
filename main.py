@@ -23,7 +23,7 @@ def getData(filename):
 
 def convertGrams():
     """This function gathers how many grams total the user wants"""
-    amount = int(input("\nHow many grams total would you like?: "))
+    amount = float(input("\nHow many grams total would you like?: "))
     return amount
 
 def converter(data, amount):
