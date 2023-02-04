@@ -20,6 +20,9 @@ def getData(filename):
         print()
         print(f'\x1b[38;5;124m' + str("FILE NOT FOUND") + u'\u001b[0m')
         return None
+    except KeyError:
+        print()
+        print("Invalid format of CSV file! See EXAMPLE.csv for example.")
 
 def convertGrams():
     """This function gathers how many grams total the user wants"""
